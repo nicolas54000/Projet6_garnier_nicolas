@@ -166,8 +166,9 @@ exports.likeDislike = (req, res, next) => {
         error
       }))
   }
+  // S'il s'agit d'un dislike
   if (like === -1) {
-    Sauce.updateOne( // S'il s'agit d'un dislike
+    Sauce.updateOne(
         {
           _id: sauceId
         }, {
