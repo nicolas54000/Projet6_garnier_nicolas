@@ -1,3 +1,6 @@
+
+// vérifie autentification
+
 const jwt = require('jsonwebtoken');
 
 module.exports = (req, res, next) => {
@@ -5,7 +8,7 @@ module.exports = (req, res, next) => {
     const token = req.headers.authorization.split(' ')[1];
     const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
     const userId = decodedToken.userId;
-    // ajout securite  on ne peut pas supprimer un objet qui na pas etre cree pas nous
+    // ajout securite  on ne peut pas supprimer un objet qui na pas etre cree par nous
     req.auth = { userId };
 
     if (req.body.userId && req.body.userId !== userId) {
