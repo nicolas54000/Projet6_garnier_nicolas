@@ -22,6 +22,9 @@ Le serveur doit fonctionner sur http://localhost:3000/.
 
 
 npm i mongoose-validator -S
+
 npm install password-validator
+
+npm install --save mongoose-unique-validator
 
 

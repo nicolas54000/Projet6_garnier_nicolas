@@ -15,7 +15,7 @@ exports.createSauce = (req, res, next) => {
   // Création d'une instance du modèle Sauce
   const sauce = new Sauce({
     ...sauceObject,
-    // On modifie l'URL de l'image, on veut l'URL complète, quelque chose dynamique avec les segments de l'URL
+    // On modifie l'URL de l'image
     imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`,
     likes: 0,
     dislikes: 0,
