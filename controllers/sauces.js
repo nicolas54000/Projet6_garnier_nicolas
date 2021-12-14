@@ -45,30 +45,28 @@ exports.createSauce = (req, res, next) => {
 
 exports.modifySauce = (req, res, next) => {
     let sauceObject = {};
-    if(req.file) {
-         // Si la modification contient une image .
-          (Sauce.findOne({
-              _id: req.params.id,
-          }).then((sauce) => {
-              // On supprime l'ancienne image du serveur
-              const filename = sauce.imageUrl.split("/images/")[1];
-              fs.unlinkSync(`images/${filename}`);
-          }),
-          (sauceObject = {
-              // On modifie les données et on ajoute la nouvelle image
-              ...JSON.parse(req.body.sauce),
-              imageUrl: `${req.protocol}://${req.get("host")}/images/${
-                  req.file.filename
-              }`,
-          }))
-        }
-         else
-         {
-          // Si la modification ne contient pas de nouvelle image
-          (sauceObject = {
-              ...req.body,
-          });
-        }
+    if (req.file) {
+        // Si la modification contient une image .
+        Sauce.findOne({
+            _id: req.params.id,
+        }).then((sauce) => {
+            // On supprime l'ancienne image du serveur
+            const filename = sauce.imageUrl.split("/images/")[1];
+            fs.unlinkSync(`images/${filename}`);
+        }),
+            (sauceObject = {
+                // On modifie les données et on ajoute la nouvelle image
+                ...JSON.parse(req.body.sauce),
+                imageUrl: `${req.protocol}://${req.get("host")}/images/${
+                    req.file.filename
+                }`,
+            });
+    } else {
+        // Si la modification ne contient pas de nouvelle image
+        sauceObject = {
+            ...req.body,
+        };
+    }
     Sauce.updateOne(
         // On applique les paramètres de sauceObject
         {
@@ -79,16 +77,16 @@ exports.modifySauce = (req, res, next) => {
             _id: req.params.id,
         }
     )
-    .then(() =>
-        res.status(200).json({
-            message: "Sauce modifiée !",
-        })
-    )
-    .catch((error) =>
-        res.status(400).json({
-            error,
-        })
-    );
+        .then(() =>
+            res.status(200).json({
+                message: "Sauce modifiée !",
+            })
+        )
+        .catch((error) =>
+            res.status(400).json({
+                error,
+            })
+        );
 };
 
 // Permet de supprimer la sauce
@@ -165,7 +163,6 @@ exports.getAllSauce = (req, res, next) => {
 // 0 annulation
 
 exports.likeDislike = (req, res, next) => {
-
     // Like présent dans le body
     let like = req.body.like;
     // On prend le userID
