@@ -1,6 +1,12 @@
 const express = require("express");
+// ajout helmet
+ const helmet = require("helmet");
+
 
 const app = express();
+
+app.use(helmet());
+
 
 const mongoose = require("mongoose");
 const path = require("path");

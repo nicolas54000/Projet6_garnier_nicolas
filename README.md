@@ -15,10 +15,13 @@ Le serveur fonctionne sur http://localhost:3000/.
 1. Cloner l'api dans un dossier backend
 2. lancer 'npm install' dans le dossiers /backend
 3. les dependences presentes dans package.json seront ajoutées
-4. 'npm start dans /frontend
-5. completer le fichier .env.dist puis le renomer en .env
-3. lancer le commande 'nodemon server' dans /backend
+4. completer le fichier .env.dist puis le renomer en .env
+5. lancer la commande 'nodemon server' dans /backend
 
+### Pour lancer le front :
+
+pour lancer l'application front du projet
+lancer la commande npmstart dans le dossier /Frontend
 
 
 

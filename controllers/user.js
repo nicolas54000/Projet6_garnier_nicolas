@@ -50,7 +50,7 @@ exports.login = (req, res, next) => {
           error: 'Utilisateur non trouvé !'
         });
       }
-      // On regarde si le mont de passe est bon
+      // On regarde si le mot de passe est bon
       bcrypt.compare(req.body.password, user.password)
         .then(valid => {
           // Si false, c'est que ce n'est pas le bon utilisateur, ou le mot de passe est incorrect
