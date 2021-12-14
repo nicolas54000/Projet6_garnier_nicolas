@@ -45,8 +45,8 @@ exports.createSauce = (req, res, next) => {
 
 exports.modifySauce = (req, res, next) => {
     let sauceObject = {};
-    req.file
-        ? // Si la modification contient une image => Utilisation de l'opérateur ternaire.
+    if(req.file) {
+         // Si la modification contient une image .
           (Sauce.findOne({
               _id: req.params.id,
           }).then((sauce) => {
@@ -61,11 +61,14 @@ exports.modifySauce = (req, res, next) => {
                   req.file.filename
               }`,
           }))
-        : // else
+        }
+         else
+         {
           // Si la modification ne contient pas de nouvelle image
           (sauceObject = {
               ...req.body,
           });
+        }
     Sauce.updateOne(
         // On applique les paramètres de sauceObject
         {
@@ -126,7 +129,7 @@ exports.deleteSauce = (req, res, next) => {
 // Permet de récupérer une seule sauce, identifiée par son id
 
 exports.getOneSauce = (req, res, next) => {
-    //  l'id de la sauce soit le même le meme que la requête
+    //  l'id de la sauce
     Sauce.findOne({
         _id: req.params.id,
     })
