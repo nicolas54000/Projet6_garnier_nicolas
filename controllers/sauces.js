@@ -46,6 +46,7 @@ exports.createSauce = (req, res, next) => {
 exports.modifySauce = (req, res, next) => {
     let sauceObject = {};
     if (req.file) {
+
         // Si la modification contient une image .
         Sauce.findOne({
             _id: req.params.id,
