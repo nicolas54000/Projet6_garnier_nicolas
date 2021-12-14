@@ -76,16 +76,16 @@ exports.modifySauce = (req, res, next) => {
             _id: req.params.id,
         }
     )
-        .then(() =>
-            res.status(200).json({
-                message: "Sauce modifiée !",
-            })
-        )
-        .catch((error) =>
-            res.status(400).json({
-                error,
-            })
-        );
+    .then(() =>
+        res.status(200).json({
+            message: "Sauce modifiée !",
+        })
+    )
+    .catch((error) =>
+        res.status(400).json({
+            error,
+        })
+    );
 };
 
 // Permet de supprimer la sauce
@@ -183,7 +183,7 @@ exports.likeDislike = (req, res, next) => {
                     usersLiked: userId,
                 },
                 $inc: {
-                    likes: +1,
+                    likes: 1,
                 },
             }
         )
@@ -209,7 +209,7 @@ exports.likeDislike = (req, res, next) => {
                     usersDisliked: userId,
                 },
                 $inc: {
-                    dislikes: +1,
+                    dislikes: 1,
                 },
             }
         )

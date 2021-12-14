@@ -50,7 +50,7 @@ exports.login = (req, res, next) => {
           error: 'Utilisateur non trouvé !'
         });
       }
-      // On regarde si le mon de passe est bon
+      // On regarde si le mont de passe est bon
       bcrypt.compare(req.body.password, user.password)
         .then(valid => {
           // Si false, c'est que ce n'est pas le bon utilisateur, ou le mot de passe est incorrect
@@ -67,7 +67,7 @@ exports.login = (req, res, next) => {
               {
                 userId: user._id
               },
-              'RANDOM_TOKEN_SECRET', // Clé du token
+              process.env.TOKEN_CODE, // Clé du token
               // expiration apres 24h
               {
                 expiresIn: '24h'

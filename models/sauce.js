@@ -45,7 +45,9 @@ const sauceSchema = mongoose.Schema({
   },
   // nombre de Like reçu
   likes: {
-    type: Number
+    type: Number,
+    required: true,
+    default: 0
   },
   // nombre de dislike reçu
   dislikes: {
