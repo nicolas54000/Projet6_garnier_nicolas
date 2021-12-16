@@ -158,17 +158,17 @@ exports.getAllSauce = (req, res, next) => {
 };
 
 // on aime ou on aime pas une sauce
-// like
-// 1= j'aime
+//
+// 1 j'aime
 //-1 j'aime pas
 // 0 annulation
 
 exports.likeDislike = (req, res, next) => {
     // Like présent dans le body
     let like = req.body.like;
-    // On prend le userID
+    // On sauvegerde le userID
     let userId = req.body.userId;
-    // On prend l'id de la sauce
+    // On sauvegerde l'id de la sauce
     let sauceId = req.params.id;
     // **ng
     console.log(req.body.like);

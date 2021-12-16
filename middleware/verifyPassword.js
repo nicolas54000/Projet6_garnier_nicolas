@@ -5,9 +5,10 @@ const passwordSchema = require("../schema_PW");
 module.exports = (req, res, next) => {
     if (!passwordSchema.validate(req.body.password)) {
         // verifie mot de passe avce les regles schemas
+
         res.writeHead(
             400,
-            '{"message":"Mot de passe requis : 8 caractères minimun. Au moins 1 Majuscule, 1 minuscule. Sans espaces"}',
+            '{"message":"Mot de passe requis : 8 caractères minimum. Au moins 1 Majuscule, 1 minuscule. Sans espaces"}',
             {
                 "content-type": "application/json",
             }
